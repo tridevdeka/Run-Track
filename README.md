@@ -34,8 +34,11 @@ This Android app allows users to track their location in the background and stor
   - Purpose: Hilt simplifies dependency injection in Android apps, making it easier to manage dependencies and improve code organization.
   - Integration: Integrated Hilt by adding the necessary dependencies in the build.gradle file and setting up Hilt modules and components for dependency injection.
 
-- **Firebase Firestore:** Utilizes Firebase Firestore for cloud-based storage of location data, enabling synchronization across devices.
+- **Firebase Firestore:**
+- Purpose: Utilizes Firebase Firestore for cloud-based storage of location data, enabling synchronization across devices.
+  
+- **Coroutines:**
+- Purpose: Uses Kotlin Coroutines for asynchronous and non-blocking programming, enhancing app responsiveness and performance.
 - 
-- **Coroutines:** Uses Kotlin Coroutines for asynchronous and non-blocking programming, enhancing app responsiveness and performance.
-- 
-- **Glide:** Integrates Glide for efficient loading and caching of images, particularly useful for displaying map markers.
+- **Glide:**
+- Purpose: Integrates Glide for efficient loading and caching of images, particularly useful for displaying map markers.
