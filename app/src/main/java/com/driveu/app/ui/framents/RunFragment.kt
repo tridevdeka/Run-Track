@@ -70,6 +70,9 @@ class RunFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         }
 
         setUpRecyclerView()
+        /* viewModel.getAllRuns().observe(viewLifecycleOwner, Observer {
+             runAdapter.submitList(it)
+         })*/
 
         getAllRunsFromFireStore()
 
@@ -77,7 +80,11 @@ class RunFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     private fun setupListeners() {
         mBinding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_runFragment_to_trackingFragment)
+            if (TrackingUtility.hasLocationPermissions(requireContext())) {
+                findNavController().navigate(R.id.action_runFragment_to_trackingFragment)
+            } else {
+                requestPermissions()
+            }
         }
     }
 
@@ -129,22 +136,12 @@ class RunFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_CODE_LOCATION_PERMISSION
+            )
 
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-                if (perms.contains("android.permission.ACCESS_BACKGROUND_LOCATION")) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Feature may not work. Enable Location \"All all the time\"",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            } else {
-                ActivityCompat.requestPermissions(
-                    requireActivity(),
-                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    REQUEST_CODE_LOCATION_PERMISSION
-                )
-            }
         } else {
             requestPermissions()
         }
@@ -169,15 +166,11 @@ class RunFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             }
 
             withContext(Dispatchers.Main) {
-                runAdapter.submitList(remoteList.reversed())
+                runAdapter.submitList(remoteList)
             }
 
         } catch (e: Exception) {
-            withContext(Dispatchers.Main) {
-                viewModel.getAllRuns().observe(viewLifecycleOwner, Observer {
-                    runAdapter.submitList(it)
-                })
-            }
+            e.printStackTrace()
         }
     }
 
