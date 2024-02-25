@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.DriveU" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#FF141221</item>
+        <item name="colorSecondary">#2A2354</item>
+        <item name="android:colorBackground">#2A1F67</item>
+        <item name="colorError">#F44336</item>
+
+        <!-- New MaterialComponents attributes. -->
+        <item name="colorPrimaryVariant">#422EBB</item>
+        <item name="colorSecondaryVariant">#4433AD</item>
+        <!--> toolbar color -->
+        <item name="colorSurface">#FF141221</item>
+
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">#FF141221</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">#FF141221</item>
+    </style>
+
+    <style name="Theme.DriveU" parent="Base.Theme.DriveU" />
+</resources>
+
