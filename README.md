@@ -48,3 +48,8 @@ This Android app allows users to track their location in the background and stor
   
 - **Glide:**
   - Purpose: Integrates Glide for efficient loading and caching of images, particularly useful for displaying map markers.
+
+- **Demo Video**
+   https://github.com/tridevdeka/Run-Track/assets/49573131/eac0198f-c5d9-497a-9b2e-7094b3be3c6c
+ 
+ 
